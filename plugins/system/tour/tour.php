@@ -1,26 +1,16 @@
 <?php
+
 /**
- * @package     Joomla.Plugin
- * @subpackage  System.stats
- *
- * @copyright   Copyright (C) 2005 - 2017 Open Source Matters,
- * Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @package    Joomla.Plugin
+ * @subpackage System.Tourguide
+ * @copyright  Copyright (C) 2005 - 2017 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */
+
 
 defined('_JEXEC') or die;
 use Joomla\Registry\Registry;
-// Uncomment the following line to enable debug mode for testing purposes.
-// Note: statistics will be sent on every page load
-// define('PLG_SYSTEM_TOUR_DEBUG', 1);
 
-/**
- * Statistics system plugin. This sends anonymous data back to the Joomla!
- * Project about the
- * PHP, SQL, Joomla and OS versions
- *
- * @since  3.5
- */
 class PlgSystemTour extends JPlugin
 {
     /**
