@@ -7,13 +7,43 @@
         var tour = {
                 id: 'hello-hopscotch',
                 steps: [
+
                     {
-                        target: '#toolbar',
+                        target: document.querySelectorAll('[class="btn btn-sm btn-success"]')[0],
+                        title: 'Welcome to Hopscotch!',
+                        content: 'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample code, but let\'s just take some time to see how Hopscotch actually works.',
+                        placement: 'right',
+                        arrowOffset: -1,
+                        showCloseButton: true
+                    },
+                    {
+                        target: document.querySelectorAll('[class="btn btn-sm btn-outline-primary"]')[0],
                         title: 'Welcome to Hopscotch!',
                         content: 'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample code, but let\'s just take some time to see how Hopscotch actually works.',
                         placement: 'bottom',
-                        arrowOffset: 60
-                    }
+                        arrowOffset: 0
+                    },
+                    {
+                        target: document.querySelectorAll('[class="btn btn-sm btn-outline-success"]')[0],
+                        title: 'Welcome to Hopscotch!',
+                        content: 'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample code, but let\'s just take some time to see how Hopscotch actually works.',
+                        placement: 'bottom',
+                        arrowOffset: 0
+                    },
+                    {
+                        target: document.querySelectorAll('[class="btn btn-sm btn-outline-danger"]')[0],
+                        title: 'Welcome to Hopscotch!',
+                        content: 'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample code, but let\'s just take some time to see how Hopscotch actually works.',
+                        placement: 'bottom',
+                        arrowOffset: 0
+                    },
+                    {
+                        target: document.querySelectorAll('[class="btn btn-sm btn-outline-primary"]')[4],
+                        title: 'Welcome to Hopscotch!',
+                        content: 'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample code, but let\'s just take some time to see how Hopscotch actually works.',
+                        placement: 'bottom',
+                        arrowOffset: 10
+                    },
                 ]
             };
 
