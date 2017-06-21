@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "target": "document.querySelectorAll('[class=\"icon-new\"]')[0]",
+
+      "title": "'Welcome to Hopscotch! NEW json'",
+      "content": "'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample code'",
+      "placement": "bottom",
+      "arrowOffset": "-1"
+    },
+    {
+      "target": " document.querySelectorAll('[class=\"icon-edit\"]')[0]",
+
+      "title": "Welcome to Hopscotch!editjson'",
+      "content": "Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample code",
+      "placement": "bottom",
+      "arrowOffset": "0"
+    },
+    {
+      "target": " document.querySelectorAll('[class=\"icon-publish\"]')[0]",
+
+      "title": "Welcome to Hopscotch! Publish'",
+      "content": "Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample code",
+      "placement": "bottom",
+      "arrowOffset": "0"
+    },
+    {
+      "target": " document.querySelectorAll('[class=\"icon-unpublish\"]')[0]",
+
+      "title": "Welcome to Hopscotch!npublish'",
+      "content": "Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample code",
+      "placement": "bottom",
+      "arrowOffset": "0"
+    },
+    {
+      "target": " document.querySelectorAll('[class=\"icon-trash\"]')[0]",
+
+      "title": "Welcome to Hopscotch!'",
+      "content": "Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample code",
+      "placement": "bottom",
+      "arrowOffset": "10"
+    }
+  ]
+}
