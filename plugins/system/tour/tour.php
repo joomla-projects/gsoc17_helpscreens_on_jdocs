@@ -65,30 +65,11 @@ class PlgSystemTour extends JPlugin
 				array('version' => 'auto', 'relative' => true)
 			);
 
-			// Bootstrap Tour File
-//			JHtml::_(
-//				'script', JUri::root()
-//				. 'media/plg_system_tour/js/bootstrap-tour.min.js',
-//				array('version' => 'auto', 'relative' => true)
-//			);
-//
-//			JHtml::_(
-//				'stylesheet', JUri::root()
-//				. 'media/plg_system_tour/css/bootstrap-tour.min.css',
-//				array('version' => 'auto', 'relative' => true)
-//			);
-
-			JHtml::_(
+            JHtml::_(
 				'script', JUri::root()
 				. 'media/plg_system_tour/js/tours.js',
 				array('version' => 'auto', 'relative' => true)
 			);
-
-//			JHtml::_(
-//				'script', JUri::root()
-//				. 'media/plg_system_tour/js/tours-boot.js',
-//				array('version' => 'auto', 'relative' => true)
-//			);
 		}
 	}
 }
