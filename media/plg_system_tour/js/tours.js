@@ -2,23 +2,34 @@
     $(document).ready(function() {
         var userLang = navigator.language;
         var pathArray = window.location.href;
-        var shiv = pathArray.split('&');
-        var option= shiv[0].split("option=")[1];
-        var view = shiv[1].split("view=")[1];
+
         var currentURL = userLang + '/';
-        if(shiv[2] !=null) {
-            var layout = shiv[2].split("layout=")[1];
+        if(window.location.href.indexOf("&")>-1) {
+            var shiv = pathArray.split('&');
+            var option= shiv[0].split("option=")[1];
+            var view = shiv[1].split("view=")[1];
+            if(shiv[2] !=null) {
+                var layout = shiv[2].split("layout=")[1];
+            }
+            if (option!=null && view !=null && layout !=null) {
+                var filename =  option +'-'+ view + '-' + layout + '.' + 'json';
+                var URL = option + '/' + filename;
+            }
+            if (option!=null && view!=null && layout ==null) {
+                filename =  option +'-'+ view +'.' + 'json';
+                URL = option + '/' + filename ;
+            }
+            if( option!=null && view==null && layout ==null )
+            {
+                filename =  option + '.' + 'json';
+                URL =  option +  '/' + filename;
+            }
+
+            console.log('& present');
         }
-        if (option!=null && view !=null && layout !=null) {
-            var filename =  option +'-'+ view + '-' + layout + '.' + 'json';
-            var URL = option + '/' + filename;
-        }
-        if (option!=null && view!=null && layout ==null) {
-             filename =  option +'-'+ view +'.' + 'json';
-            URL = option + '/' + filename ;
-        }
-        if( option!=null && view==null && layout ==null )
-        {
+        else{
+            option = location.search.split('option=')[1];
+            console.log(option);
             filename =  option + '.' + 'json';
             URL =  option +  '/' + filename;
         }
