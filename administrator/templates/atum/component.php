@@ -9,11 +9,9 @@
 
 defined('_JEXEC') or die;
 
-$lang = JFactory::getLanguage();
-$doc  = JFactory::getDocument();
+/** @var JDocumentHtml $this */
 
-// Output as HTML5
-$this->setHtml5(true);
+$lang = JFactory::getLanguage();
 
 // Add JavaScript Frameworks
 JHtml::_('bootstrap.framework');
