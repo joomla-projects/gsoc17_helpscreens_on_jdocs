@@ -2,38 +2,41 @@
     $(document).ready(function() {
         var userLang = navigator.language;
         var pathArray = window.location.href;
-
         var currentURL = userLang + '/';
-        if(window.location.href.indexOf("&")>-1) {
+        if(window.location.href.indexOf("&")>-1)
+        {
             var shiv = pathArray.split('&');
             var option= shiv[0].split("option=")[1];
             var view = shiv[1].split("view=")[1];
-            if(shiv[2] !=null) {
-                var layout = shiv[2].split("layout=")[1];
-            }
-            if (option!=null && view !=null && layout !=null) {
-                var filename =  option +'-'+ view + '-' + layout + '.' + 'json';
-                var URL = option + '/' + filename;
-            }
-            if (option!=null && view!=null && layout ==null) {
-                filename =  option +'-'+ view +'.' + 'json';
-                URL = option + '/' + filename ;
-            }
-            if( option!=null && view==null && layout ==null )
+            var layout = '';
+            var filename = '';
+            var URL = '';
+            if(option)  //case if their is presence of two paramteres and one of them is option
             {
-                filename =  option + '.' + 'json';
-                URL =  option +  '/' + filename;
+                filename =  option;
+                if(view)         //case if their is presence of two paramteres and they are view and option
+                {
+                    filename =  filename +'-'+ view;
+                }
+                if(shiv[2])    //case if their is presence of three paramteres and they are view and option and layout
+                {
+                    layout = shiv[2].split("layout=")[1];
+                    filename =  filename + '-' + layout;
+                    URL = URL + '/' + filename;
+                    console.log('layout');
+                }
+                filename = filename + '.' + 'json';//made the file name to be fetched out
+                URL = option + '/' + filename; // path from where the file to be fetched
             }
-
-            console.log('& present');
         }
-        else{
+        else
+        {
+            console.log('else');
             option = location.search.split('option=')[1];
             console.log(option);
             filename =  option + '.' + 'json';
             URL =  option +  '/' + filename;
         }
-        // var currentURL = userLang + '/' + option + '/';
         var btn= '<button class="btn btn-sm btn-outline-primary" id="startTourBtn"><span class="icon"></span>Tour</button>';
         $('#toolbar').append(btn);
         var myItems;
