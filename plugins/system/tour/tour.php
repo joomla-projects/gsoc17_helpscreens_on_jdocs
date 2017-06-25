@@ -62,7 +62,7 @@ class PlgSystemTour extends JPlugin
 			JHtml::_(
 				'stylesheet', JUri::root()
 				. 'media/plg_system_tour/css/hopscotch.min.css',
-                array('version' => 'auto', 'relative' => true)
+				array('version' => 'auto', 'relative' => true)
 			);
 
 			JHtml::_(
