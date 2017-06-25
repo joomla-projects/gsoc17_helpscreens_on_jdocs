@@ -17,59 +17,59 @@ use Joomla\Registry\Registry;
  */
 class PlgSystemTour extends JPlugin
 {
-    /**
+	/**
      * Listener for the `onBeforeRender` event
      *
      * @return  void
      *
      * @since   __DEPLOY_VERSION__
      */
-    public function onBeforeRender()
-    {
-        // Get the application object
-        $app = JFactory::getApplication();
+	public function onBeforeRender()
+	{
+		// Get the application object
+		$app = JFactory::getApplication();
 
-        // Run in backend
-        if ($app->isClient('administrator'))
-        {
-            // Get the input object
-            $input = $app->input;
+		// Run in backend
+		if ($app->isClient('administrator'))
+		{
+			// Get the input object
+			$input = $app->input;
 
-            // Get an instance of the Toolbar
-            $toolbar = JToolbar::getInstance('toolbar');
-        }
-    }
+			// Get an instance of the Toolbar
+			$toolbar = JToolbar::getInstance('toolbar');
+		}
+	}
 
-    /**
+	/**
      * Listener for the `onBeforeCompileHead` event
      *
      * @return  void
      *
      * @since   __DEPLOY_VERSION__
      */
-    public function onBeforeCompileHead()
-    {
-        // Only going to run these in the backend for now
-        if (JFactory::getApplication()->isClient('administrator'))
-        {
-            // Hopscotch Tour File
-            JHtml::_(
-                'script', JUri::root()
-                . 'media/plg_system_tour/js/hopscotch.min.js',
-                array('version' => 'auto', 'relative' => true)
-            );
+	public function onBeforeCompileHead()
+	{
+		// Only going to run these in the backend for now
+		if (JFactory::getApplication()->isClient('administrator'))
+		{
+			// Hopscotch Tour File
+			JHtml::_(
+				'script', JUri::root()
+				. 'media/plg_system_tour/js/hopscotch.min.js',
+				array('version' => 'auto', 'relative' => true)
+			);
 
-            JHtml::_(
-                'stylesheet', JUri::root()
-                . 'media/plg_system_tour/css/hopscotch.min.css',
+			JHtml::_(
+				'stylesheet', JUri::root()
+				. 'media/plg_system_tour/css/hopscotch.min.css',
                 array('version' => 'auto', 'relative' => true)
-            );
+			);
 
-            JHtml::_(
-                'script', JUri::root()
-                . 'media/plg_system_tour/js/tours.js',
-                array('version' => 'auto', 'relative' => true)
-            );
-        }
-    }
+			JHtml::_(
+				'script', JUri::root()
+				. 'media/plg_system_tour/js/tours.js',
+				array('version' => 'auto', 'relative' => true)
+			);
+		}
+	}
 }
