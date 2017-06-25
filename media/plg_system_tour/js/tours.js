@@ -3,8 +3,10 @@
         var userLang = navigator.language;
         var pathArray = window.location.href;
         var currentURL = userLang + '/';
+
         if(window.location.href.indexOf("&")>-1)
         {
+
             var shiv = pathArray.split('&');
             var option= shiv[0].split("option=")[1];
             var view = shiv[1].split("view=")[1];
@@ -18,7 +20,7 @@
                 {
                     filename =  filename +'-'+ view;
                 }
-                if(shiv[2])    //case if their is presence of three paramteres and they are view and option and layout
+                if((window.location.href.indexOf("layout=")>0))   //case if their is presence of three paramteres and they are view and option and layout
                 {
                     layout = shiv[2].split("layout=")[1];
                     filename =  filename + '-' + layout;
@@ -36,18 +38,43 @@
         var btn= '<button class="btn btn-sm btn-outline-primary" id="startTourBtn"><span class="icon"></span>Tour</button>';
         $('#toolbar').append(btn);
         var myItems;
-        var s = window.location.pathname.split('/');
-        nURL = window.location.protocol + '//' + window.location.host + '/' + s[1] + '/media/guide/' + navigator.language + '/'+ URL ;
-        $.getJSON( nURL  , function(data) {
-            myItems = data.items;
-            var tour = {
-                id: 'hello-hopscotch',
-                steps: myItems
-            };
-            $("#startTourBtn").click(function () {
-                hopscotch.startTour(tour);
-            });
+        var tour;
+        var nURL;
+        var finalUrl;
+        var tournotfound;
+        var splitURL = window.location.pathname.split('/');
+        nURL = window.location.protocol + '//' + window.location.host + '/' + splitURL[1] + '/media/guide/' + navigator.language + '/'+ URL ; //
+        tournotfound = window.location.protocol + '//' + window.location.host + '/' + splitURL[1] + '/media/guide/' + navigator.language + '/jsonNotFound.json' ;// error JSON file if JSON file not found
+        $.ajax({
+            url:nURL,
+            type:'HEAD',
+            error: function()
+            {
+                finalUrl=tournotfound;
+                $.getJSON( finalUrl  , function(data) {
+                    myItems = data.items;
+                    tour = {
+                        id: 'hello-hopscotch',
+                        steps: myItems
+                    };
+
+                });
+            },
+            success: function()
+            {
+                //file exists
+                finalUrl=nURL;
+                $.getJSON( finalUrl  , function(data) {
+                    myItems = data.items;
+                    tour = {
+                        id: 'hello-hopscotch',
+                        steps: myItems
+                    };
+                });
+            }
+        });
+        $("#startTourBtn").click(function () {
+            hopscotch.startTour(tour);
         });
     });
-
 }(jQuery));

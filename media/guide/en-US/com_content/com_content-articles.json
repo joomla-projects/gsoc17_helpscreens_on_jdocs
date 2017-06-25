@@ -2,28 +2,28 @@
   "items": [
     {
       "target": ".icon-new",
-      "title": "'TITLE new'",
+      "title": "'Article'",
       "content": "'TItle content'",
       "placement": "bottom",
       "arrowOffset": "-1"
     },
     {
       "target": ".icon-edit",
-      "title": "'Welcome to Hopscotch!editjson'",
+      "title": "'Article'",
       "content": "'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample cod'",
       "placement": "bottom",
       "arrowOffset": "0"
     },
     {
       "target": ".icon-publish",
-      "title": "'Welcome to Hopscotch! Publish'",
+      "title": "'Artivcel'",
       "content": "'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample co'",
       "placement": "bottom",
       "arrowOffset": "0"
     },
     {
       "target": ".icon-unpublish",
-      "title": "'Welcome to Hopscotch!npublish'",
+      "title": "'Article'",
       "content": "'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample c'",
       "placement": "bottom",
       "arrowOffset": "0"
