@@ -1,15 +1,11 @@
 (function ($) {
     $(document).ready(function() {
-        var userLang = navigator.language;
-        var pathArray = window.location.href;
-        var currentURL = userLang + '/';
-
         if(window.location.href.indexOf("&")>-1)
         {
-
-            var shiv = pathArray.split('&');
-            var option= shiv[0].split("option=")[1];
-            var view = shiv[1].split("view=")[1];
+            var URLsplit = window.location.href.split('&');
+            console.log(URLsplit);
+            var option= URLsplit[0].split("option=")[1];
+            var view = URLsplit[1].split("view=")[1];
             var layout = '';
             var filename = '';
             var URL = '';
@@ -22,7 +18,7 @@
                 }
                 if((window.location.href.indexOf("layout=")>0))   //case if their is presence of three paramteres and they are view and option and layout
                 {
-                    layout = shiv[2].split("layout=")[1];
+                    layout = URLsplit[2].split("layout=")[1];
                     filename =  filename + '-' + layout;
                 }
                 filename = filename + '.' + 'json';//made the file name to be fetched out
@@ -57,7 +53,6 @@
                         id: 'hello-hopscotch',
                         steps: myItems
                     };
-
                 });
             },
             success: function()
