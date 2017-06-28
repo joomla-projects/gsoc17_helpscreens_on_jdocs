@@ -2,36 +2,36 @@
   "items": [
     {
       "target": ".icon-new",
-      "title": "'Article'",
-      "content": "'TItle content'",
+      "title": "Article",
+      "content": "TItle content",
       "placement": "bottom",
       "arrowOffset": "-1"
     },
     {
       "target": ".icon-edit",
-      "title": "'Article'",
-      "content": "'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample cod'",
+      "title": "Article",
+      "content": "This is an example Hopscotch tour. There will be plenty of time to read documentation and sample",
       "placement": "bottom",
       "arrowOffset": "0"
     },
     {
       "target": ".icon-publish",
-      "title": "'Artivcel'",
-      "content": "'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample co'",
+      "title": "Articel",
+      "content": "Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample",
       "placement": "bottom",
       "arrowOffset": "0"
     },
     {
       "target": ".icon-unpublish",
-      "title": "'Article'",
-      "content": "'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample c'",
+      "title": "Article",
+      "content": "Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample",
       "placement": "bottom",
       "arrowOffset": "0"
     },
     {
       "target": ".icon-trash",
-      "title": "'Welcome to Hopscotch! Trash'",
-      "content": "'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample d",
+      "title": "Welcome to Hopscotch! Trash",
+      "content": "Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample",
       "placement": "bottom",
       "arrowOffset": "10"
     }

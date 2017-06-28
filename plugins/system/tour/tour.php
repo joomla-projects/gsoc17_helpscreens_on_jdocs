@@ -66,9 +66,9 @@ class PlgSystemTour extends JPlugin
 			);
 
 			JHtml::_(
-				'script', JUri::root()
-				. 'media/plg_system_tour/js/tours.js',
-				array('version' => 'auto', 'relative' => true)
+					'script', JUri::root()
+					. 'media/plg_system_tour/js/guide.js',
+					array('version' => 'auto', 'relative' => true)
 			);
 		}
 	}

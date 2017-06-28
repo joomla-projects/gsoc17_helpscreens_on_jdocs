@@ -2,36 +2,36 @@
   "items": [
     {
       "target": ".icon-new",
-      "title": "'Group-Content Title'",
-      "content": "'TItle content'",
+      "title": "Group-Content Title",
+      "content": " content",
       "placement": "bottom",
       "arrowOffset": "-1"
     },
     {
       "target": ".icon-edit",
-      "title": "'Group-Content '",
-      "content": "'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample cod'",
+      "title": "Group-Content",
+      "content": "Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample cod",
       "placement": "bottom",
       "arrowOffset": "0"
     },
     {
       "target": ".icon-publish",
-      "title": "'Group-Content '",
-      "content": "'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample co'",
+      "title": "Group-Content",
+      "content": "Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample co",
       "placement": "bottom",
       "arrowOffset": "0"
     },
     {
       "target": ".icon-unpublish",
-      "title": "'Group-Content '",
-      "content": "'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample c'",
+      "title": "Group-Content",
+      "content": "Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample",
       "placement": "bottom",
       "arrowOffset": "0"
     },
     {
       "target": ".icon-trash",
-      "title": "'Group-Content '",
-      "content": "'Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample d",
+      "title": "Group-Content",
+      "content": "Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample",
       "placement": "bottom",
       "arrowOffset": "10"
     }
