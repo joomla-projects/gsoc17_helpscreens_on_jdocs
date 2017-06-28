@@ -38,7 +38,7 @@ Joomla = window.Joomla || {};
         btn.innerHTML = '<span class="icon"></span>Tour_Vanilla</button>';
         document.getElementById('toolbar').appendChild(btn);
         Joomla.request(  {
-            url: 'https://yveshoppe.de/jdocsapi/fr/jsonNotFound.json',
+            url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + navigator.language + '/'+ URL,
             method: 'GET',
             data:    '',
             perform: true,
