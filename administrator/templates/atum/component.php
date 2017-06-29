@@ -11,7 +11,7 @@ defined('_JEXEC') or die;
 
 /** @var JDocumentHtml $this */
 
-$lang = JFactory::getLanguage();
+$lang = \Joomla\CMS\Factory::getLanguage();
 
 // Add JavaScript Frameworks
 JHtml::_('bootstrap.framework');
