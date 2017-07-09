@@ -34,10 +34,6 @@ class PlgSystemTour extends JPlugin
 		{
 			// Get the input object
 			$input = $app->input;
-			$document = JFactory::getDocument();
-			$jinput = JFactory::getApplication()->input;
-			echo "<script> var urlOption = " . $jinput->get('option') . " </script>";
-			$document->addScriptDeclaration('JUri::root(). \'media/plg_system_tour/js/guide.js\'');
 
 			// Get an instance of the Toolbar
 			$toolbar = JToolbar::getInstance('toolbar');
@@ -68,6 +64,10 @@ class PlgSystemTour extends JPlugin
 				. 'media/plg_system_tour/css/hopscotch.min.css',
 				array('version' => 'auto', 'relative' => true)
 			);
+			$document = JFactory::getDocument();
+			$jinput = JFactory::getApplication()->input;
+//			echo "<script> var urlOption = " . $jinput->get('option') . " </script>";
+			$document->addScriptDeclaration("<script> var urlOption = " . $jinput->get('option') . " </script>" );
 
 			JHtml::_(
 					'script', JUri::root()
