@@ -28,10 +28,7 @@ class PlgSystemTour extends JPlugin
 	{
 		// Get the application object
 		$app = JFactory::getApplication();
-		$document = JFactory::getDocument();
-		$jinput = JFactory::getApplication()->input;
-		echo "<script> var urlOption = " . $jinput->get('option') . " </script>";
-		$document->addScriptDeclaration('JUri::root(). \'media/plg_system_tour/js/guide.js\'');
+	
 		// Run in backend
 		if ($app->isClient('administrator'))
 		{
