@@ -64,12 +64,13 @@ class PlgSystemTour extends JPlugin
 				. 'media/plg_system_tour/css/hopscotch.min.css',
 				array('version' => 'auto', 'relative' => true)
 			);
+			$lang = JFactory::getLanguage()->getTag();
 			$document = JFactory::getDocument();
 			$jinput = JFactory::getApplication()->input;
 			$document->addScriptDeclaration("var urlOption = '". $jinput->get('option') . "' ;");
 			$document->addScriptDeclaration("var urlView = '". $jinput->get('view') . "' ;");
 			$document->addScriptDeclaration("var urlLayout = '". $jinput->get('layout') . "' ;");
-
+			$document->addScriptDeclaration("var langtag = '". $lang = JFactory::getLanguage()->getTag(). "' ;");
 			JHtml::_(
 					'script', JUri::root()
 					. 'media/plg_system_tour/js/guide.js',

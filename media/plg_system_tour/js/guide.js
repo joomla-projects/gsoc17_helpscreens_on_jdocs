@@ -14,7 +14,6 @@ Joomla = window.Joomla || {};
                 }
                 if ((window.location.href.indexOf("layout=") > 0))   //case if their is presence of three paramteres and they are view and option and layout
                 {
-                    // layout = URLsplit[2].split("layout=")[1];
                     filename = filename + '_' + urlLayout;
                 }
                 filename = filename + '.' + 'json';//made the file name to be fetched out
@@ -24,11 +23,12 @@ Joomla = window.Joomla || {};
         }
         else
         {
-
-            // option = location.search.split('option=')[1];
             filename =  urlOption + '.' + 'json';
             URL =  urlOption +  '/' + filename;
         }
+
+        var a= '<button class="btn btn-sm btn-outline-primary" id="startTourBtn"><span class="icon"></span>Tour</button>';
+        document.getElementById('toolbar').appendChild(a);
         var btn= document.createElement('button');
         btn.classList.add('btn');
         btn.classList.add('btn-sm');
@@ -37,7 +37,7 @@ Joomla = window.Joomla || {};
         btn.innerHTML = '<span class="icon"></span>Tour_Vanilla</button>';
         document.getElementById('toolbar').appendChild(btn);
         Joomla.request(  {
-            url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + navigator.language + '/'+ URL,
+            url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + langtag + '/'+ URL,
             method: 'GET',
             data:    '',
             perform: true,
@@ -53,7 +53,7 @@ Joomla = window.Joomla || {};
             },
             onError : function() {
                 Joomla.request({
-                    url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + navigator.language + '/jsonNotFound.json' ,
+                    url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + langtag + '/jsonNotFound.json' ,
                     method: 'GET',
                     data:    '',
                     perform: true,
