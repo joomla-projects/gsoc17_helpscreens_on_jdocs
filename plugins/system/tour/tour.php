@@ -66,8 +66,9 @@ class PlgSystemTour extends JPlugin
 			);
 			$document = JFactory::getDocument();
 			$jinput = JFactory::getApplication()->input;
-//			echo "<script> var urlOption = " . $jinput->get('option') . " </script>";
-			$document->addScriptDeclaration("<script> var urlOption = " . $jinput->get('option') . " </script>" );
+			$document->addScriptDeclaration("var urlOption = '". $jinput->get('option') . "' ;");
+			$document->addScriptDeclaration("var urlView = '". $jinput->get('view') . "' ;");
+			$document->addScriptDeclaration("var urlLayout = '". $jinput->get('layout') . "' ;");
 
 			JHtml::_(
 					'script', JUri::root()

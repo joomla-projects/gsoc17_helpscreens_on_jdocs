@@ -1,34 +1,33 @@
 Joomla = window.Joomla || {};
 (function (Joomla, window) {
     document.addEventListener('DOMContentLoaded', function() {
-        if(window.location.href.indexOf("&")>-1) {
-            var URLsplit = window.location.href.split('&');
-            var option = URLsplit[0].split("option=")[1];
-            var view = URLsplit[1].split("view=")[1];
-            var layout = '';
+             if(window.location.href.indexOf("&")>-1) {
             var filename = '';
             var URL = '';
-            if (option)  //case if their is presence of two paramteres and one of them is option
+
+            if (urlOption)  //case if their is presence of two paramteres and one of them is option
             {
-                filename = option;
-                if (view)         //case if their is presence of two paramteres and they are view and option
+                filename = urlOption;
+                if (urlView)         //case if their is presence of two paramteres and they are view and option
                 {
-                    filename = filename + '-' + view;
+                    filename = filename + '_' + urlView;
                 }
                 if ((window.location.href.indexOf("layout=") > 0))   //case if their is presence of three paramteres and they are view and option and layout
                 {
-                    layout = URLsplit[2].split("layout=")[1];
-                    filename = filename + '-' + layout;
+                    // layout = URLsplit[2].split("layout=")[1];
+                    filename = filename + '_' + urlLayout;
                 }
                 filename = filename + '.' + 'json';//made the file name to be fetched out
-                URL = option + '/' + filename; // path from where the file to be fetched
+                URL = urlOption + '/' + filename; // path from where the file to be fetched
             }
+            console.log(URL);
         }
         else
         {
-            option = location.search.split('option=')[1];
-            filename =  option + '.' + 'json';
-            URL =  option +  '/' + filename;
+
+            // option = location.search.split('option=')[1];
+            filename =  urlOption + '.' + 'json';
+            URL =  urlOption +  '/' + filename;
         }
         var btn= document.createElement('button');
         btn.classList.add('btn');
