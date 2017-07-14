@@ -1,36 +1,31 @@
 Joomla = window.Joomla || {};
 (function (Joomla, window) {
     document.addEventListener('DOMContentLoaded', function() {
-        var myOptions = Joomla.getOptions('tour-guide');
-        console.log(myOptions);
+        var urlParameters = Joomla.getOptions('tour-guide');
         if(window.location.href.indexOf("&")>-1) {
             var filename = '';
             var URL = '';
 
-            if (urlOption)  //case if their is presence of two paramteres and one of them is option
+            if (urlParameters.urlOption)  //case if their is presence of two paramteres and one of them is option
             {
-                filename = urlOption;
-                if (urlView)         //case if their is presence of two paramteres and they are view and option
+                filename = urlParameters.urlOption;
+                if (urlParameters.urlView)         //case if their is presence of two paramteres and they are view and option
                 {
-                    filename = filename + '_' + urlView;
+                    filename = filename + '_' + urlParameters.urlView;
                 }
                 if ((window.location.href.indexOf("layout=") > 0))   //case if their is presence of three paramteres and they are view and option and layout
                 {
-                    filename = filename + '_' + urlLayout;
+                    filename = filename + '_' + urlParameters.urlLayout;
                 }
                 filename = filename + '.' + 'json';//made the file name to be fetched out
-                URL = urlOption + '/' + filename; // path from where the file to be fetched
+                URL = urlParameters.urlOption + '/' + filename; // path from where the file to be fetched
             }
-            console.log(URL);
         }
         else
         {
-            filename =  urlOption + '.' + 'json';
-            URL =  urlOption +  '/' + filename;
+            filename =  urlParameters.urlOption + '.' + 'json';
+            URL =  urlParameters.urlOption +  '/' + filename;
         }
-
-        var a= '<button class="btn btn-sm btn-outline-primary" id="startTourBtn"><span class="icon"></span>Tour</button>';
-        document.getElementById('toolbar').appendChild(a);
         var btn= document.createElement('button');
         btn.classList.add('btn');
         btn.classList.add('btn-sm');
@@ -39,7 +34,7 @@ Joomla = window.Joomla || {};
         btn.innerHTML = '<span class="icon"></span>Tour_Vanilla</button>';
         document.getElementById('toolbar').appendChild(btn);
         Joomla.request(  {
-            url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + langtag + '/'+ URL,
+            url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + urlParameters.langtag + '/'+ URL,
             method: 'GET',
             data:    '',
             perform: true,
@@ -55,7 +50,7 @@ Joomla = window.Joomla || {};
             },
             onError : function() {
                 Joomla.request({
-                    url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + langtag + '/jsonNotFound.json' ,
+                    url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + urlParameters.langtag + '/jsonNotFound.json' ,
                     method: 'GET',
                     data:    '',
                     perform: true,

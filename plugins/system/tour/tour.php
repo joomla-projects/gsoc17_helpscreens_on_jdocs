@@ -68,10 +68,10 @@ class PlgSystemTour extends JPlugin
 			$jinput = JFactory::getApplication()->input;
 
 			$document->addScriptOptions('tour-guide',
-				array( "urlOption => " . $jinput->get('option') . "",
-					"urlView => " . $jinput->get('view') . "",
-					"urlLayout => " . $jinput->get('layout') . "",
-					"langtag  => " . JFactory::getLanguage()->getTag() . ""
+				array( 'urlOption' => $jinput->get('option'),
+					'urlView' => $jinput->get('view'),
+					'urlLayout' => $jinput->get('layout'),
+					'langtag'  => JFactory::getLanguage()->getTag()
 				)
 			);
 			JHtml::_(
