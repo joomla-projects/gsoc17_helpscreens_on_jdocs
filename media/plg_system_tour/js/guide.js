@@ -1,7 +1,9 @@
 Joomla = window.Joomla || {};
 (function (Joomla, window) {
     document.addEventListener('DOMContentLoaded', function() {
-             if(window.location.href.indexOf("&")>-1) {
+        var myOptions = Joomla.getOptions('tour-guide');
+        console.log(myOptions);
+        if(window.location.href.indexOf("&")>-1) {
             var filename = '';
             var URL = '';
 
