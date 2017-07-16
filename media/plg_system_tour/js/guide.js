@@ -1,6 +1,7 @@
 Joomla = window.Joomla || {};
 (function (Joomla, window) {
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function()
+    {
         var urlParameters = Joomla.getOptions('tour-guide');
         if (!urlParameters) { return; }
         if (window.location.href.indexOf("&") > -1)
@@ -43,11 +44,13 @@ Joomla = window.Joomla || {};
                 perform: true,
                 onSuccess: function(data)
                 {
-                    var tour = {
-                        id: 'hello-hopscotch',
-                        steps: JSON.parse(data).items
-                    };
-                    document.getElementById("startTourBtn").addEventListener('click', function () {
+                    var tour =
+                        {
+                            id: 'hello-hopscotch',
+                            steps: JSON.parse(data).items
+                        };
+                    document.getElementById("startTourBtn").addEventListener('click', function ()
+                    {
                         hopscotch.startTour(tour);
                     });
                 },
@@ -61,11 +64,13 @@ Joomla = window.Joomla || {};
                             perform: true,
                             onSuccess: function(data)
                             {
-                                var tour = {
-                                    id: 'hello-hopscotchs',
-                                    steps: JSON.parse(data).items
-                                };
-                                document.getElementById("startTourBtn").addEventListener('click', function () {
+                                var tour =
+                                    {
+                                        id: 'hello-hopscotchs',
+                                        steps: JSON.parse(data).items
+                                    };
+                                document.getElementById("startTourBtn").addEventListener('click', function ()
+                                {
                                     hopscotch.startTour(tour);
                                 });
                             }
