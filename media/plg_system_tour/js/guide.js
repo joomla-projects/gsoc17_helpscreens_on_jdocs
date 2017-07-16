@@ -2,30 +2,30 @@ Joomla = window.Joomla || {};
 (function (Joomla, window) {
     document.addEventListener('DOMContentLoaded', function() {
         var urlParameters = Joomla.getOptions('tour-guide');
-        if(window.location.href.indexOf("&")>-1) {
-            var filename = '';
-            var URL = '';
+        if (!urlParameters) { return; }
+            if (window.location.href.indexOf("&") > -1) {
+                var filename = '';
+                var URL = '';
 
-            if (urlParameters.urlOption)  //case if their is presence of two paramteres and one of them is option
-            {
-                filename = urlParameters.urlOption;
-                if (urlParameters.urlView)         //case if their is presence of two paramteres and they are view and option
+                if (urlParameters.urlOption)  //case if their is presence of two paramteres and one of them is option
                 {
-                    filename = filename + '_' + urlParameters.urlView;
+                    filename = urlParameters.urlOption;
+                    if (urlParameters.urlView)         //case if their is presence of two paramteres and they are view and option
+                    {
+                        filename = filename + '_' + urlParameters.urlView;
+                    }
+                    if ((window.location.href.indexOf("layout=") > 0))   //case if their is presence of three paramteres and they are view and option and layout
+                    {
+                        filename = filename + '_' + urlParameters.urlLayout;
+                    }
+                    filename = filename + '.' + 'json';//made the file name to be fetched out
+                    URL = urlParameters.urlOption + '/' + filename; // path from where the file to be fetched
                 }
-                if ((window.location.href.indexOf("layout=") > 0))   //case if their is presence of three paramteres and they are view and option and layout
-                {
-                    filename = filename + '_' + urlParameters.urlLayout;
-                }
-                filename = filename + '.' + 'json';//made the file name to be fetched out
-                URL = urlParameters.urlOption + '/' + filename; // path from where the file to be fetched
             }
-        }
-        else
-        {
-            filename =  urlParameters.urlOption + '.' + 'json';
-            URL =  urlParameters.urlOption +  '/' + filename;
-        }
+            else {
+                filename = urlParameters.urlOption + '.' + 'json';
+                URL = urlParameters.urlOption + '/' + filename;
+            }
         var btn= document.createElement('button');
         btn.classList.add('btn');
         btn.classList.add('btn-sm');
@@ -42,7 +42,6 @@ Joomla = window.Joomla || {};
                 var tour = {
                     id: 'hello-hopscotch',
                     steps: JSON.parse(data).items
-
                 };
                 document.getElementById("startTourBtn").addEventListener('click', function () {
                     hopscotch.startTour(tour);
@@ -57,7 +56,7 @@ Joomla = window.Joomla || {};
                     onSuccess: function(data)
                     {
                         var tour = {
-                            id: 'hello-hopscotch',
+                            id: 'hello-hopscotchs',
                             steps: JSON.parse(data).items
                         };
                         document.getElementById("startTourBtn").addEventListener('click', function () {
