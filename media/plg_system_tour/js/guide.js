@@ -3,29 +3,31 @@ Joomla = window.Joomla || {};
     document.addEventListener('DOMContentLoaded', function() {
         var urlParameters = Joomla.getOptions('tour-guide');
         if (!urlParameters) { return; }
-            if (window.location.href.indexOf("&") > -1) {
-                var filename = '';
-                var URL = '';
+        if (window.location.href.indexOf("&") > -1)
+        {
+            var filename = '';
+            var URL = '';
 
-                if (urlParameters.urlOption)  //case if their is presence of two paramteres and one of them is option
+            if (urlParameters.urlOption)  //case if their is presence of two paramteres and one of them is option
+            {
+                filename = urlParameters.urlOption;
+                if (urlParameters.urlView)         //case if their is presence of two paramteres and they are view and option
                 {
-                    filename = urlParameters.urlOption;
-                    if (urlParameters.urlView)         //case if their is presence of two paramteres and they are view and option
-                    {
-                        filename = filename + '_' + urlParameters.urlView;
-                    }
-                    if ((window.location.href.indexOf("layout=") > 0))   //case if their is presence of three paramteres and they are view and option and layout
-                    {
-                        filename = filename + '_' + urlParameters.urlLayout;
-                    }
-                    filename = filename + '.' + 'json';//made the file name to be fetched out
-                    URL = urlParameters.urlOption + '/' + filename; // path from where the file to be fetched
+                    filename = filename + '_' + urlParameters.urlView;
                 }
+                if ((window.location.href.indexOf("layout=") > 0))   //case if their is presence of three paramteres and they are view and option and layout
+                {
+                    filename = filename + '_' + urlParameters.urlLayout;
+                }
+                filename = filename + '.' + 'json';//made the file name to be fetched out
+                URL = urlParameters.urlOption + '/' + filename; // path from where the file to be fetched
             }
-            else {
-                filename = urlParameters.urlOption + '.' + 'json';
-                URL = urlParameters.urlOption + '/' + filename;
-            }
+        }
+        else
+        {
+            filename = urlParameters.urlOption + '.' + 'json';
+            URL = urlParameters.urlOption + '/' + filename;
+        }
         var btn= document.createElement('button');
         btn.classList.add('btn');
         btn.classList.add('btn-sm');
@@ -33,12 +35,14 @@ Joomla = window.Joomla || {};
         btn.setAttribute('id', 'startTourBtn');
         btn.innerHTML = '<span class="icon"></span>Tour_Vanilla</button>';
         document.getElementById('toolbar').appendChild(btn);
-        Joomla.request(  {
+        Joomla.request(
+            {
             url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + urlParameters.langtag + '/'+ URL,
             method: 'GET',
             data:    '',
             perform: true,
-            onSuccess: function(data) {
+            onSuccess: function(data)
+            {
                 var tour = {
                     id: 'hello-hopscotch',
                     steps: JSON.parse(data).items
@@ -47,8 +51,10 @@ Joomla = window.Joomla || {};
                     hopscotch.startTour(tour);
                 });
             },
-            onError : function() {
-                Joomla.request({
+            onError : function()
+            {
+                Joomla.request(
+                    {
                     url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + urlParameters.langtag + '/jsonNotFound.json' ,
                     method: 'GET',
                     data:    '',

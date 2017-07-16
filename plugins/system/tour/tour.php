@@ -66,8 +66,7 @@ class PlgSystemTour extends JPlugin
 			);
 			$document = JFactory::getDocument();
 			$jinput = JFactory::getApplication()->input;
-
-			$document->addScriptOptions('tour-guide',
+			$document->addScriptOptions('tour-guide', //spliting the URL for get param of the layout,view,option etc
 				array( 'urlOption' => $jinput->get('option'),
 					'urlView' => $jinput->get('view'),
 					'urlLayout' => $jinput->get('layout'),
