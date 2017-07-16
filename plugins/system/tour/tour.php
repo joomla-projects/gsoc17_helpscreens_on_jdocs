@@ -64,9 +64,10 @@ class PlgSystemTour extends JPlugin
 				. 'media/plg_system_tour/css/hopscotch.min.css',
 				array('version' => 'auto', 'relative' => true)
 			);
+			// Spliting the URL for get param of the layout,view,option etc
 			$document = JFactory::getDocument();
 			$jinput = JFactory::getApplication()->input;
-			$document->addScriptOptions('tour-guide', // Spliting the URL for get param of the layout,view,option etc
+			$document->addScriptOptions('tour-guide',
 				array( 'urlOption' => $jinput->get('option'),
 					'urlView' => $jinput->get('view'),
 					'urlLayout' => $jinput->get('layout'),
