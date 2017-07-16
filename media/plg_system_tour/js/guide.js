@@ -37,40 +37,40 @@ Joomla = window.Joomla || {};
         document.getElementById('toolbar').appendChild(btn);
         Joomla.request(
             {
-            url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + urlParameters.langtag + '/'+ URL,
-            method: 'GET',
-            data:    '',
-            perform: true,
-            onSuccess: function(data)
-            {
-                var tour = {
-                    id: 'hello-hopscotch',
-                    steps: JSON.parse(data).items
-                };
-                document.getElementById("startTourBtn").addEventListener('click', function () {
-                    hopscotch.startTour(tour);
-                });
-            },
-            onError : function()
-            {
-                Joomla.request(
-                    {
-                    url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + urlParameters.langtag + '/jsonNotFound.json' ,
-                    method: 'GET',
-                    data:    '',
-                    perform: true,
-                    onSuccess: function(data)
-                    {
-                        var tour = {
-                            id: 'hello-hopscotchs',
-                            steps: JSON.parse(data).items
-                        };
-                        document.getElementById("startTourBtn").addEventListener('click', function () {
-                            hopscotch.startTour(tour);
+                url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + urlParameters.langtag + '/'+ URL,
+                method: 'GET',
+                data:    '',
+                perform: true,
+                onSuccess: function(data)
+                {
+                    var tour = {
+                        id: 'hello-hopscotch',
+                        steps: JSON.parse(data).items
+                    };
+                    document.getElementById("startTourBtn").addEventListener('click', function () {
+                        hopscotch.startTour(tour);
+                    });
+                },
+                onError : function()
+                {
+                    Joomla.request(
+                        {
+                            url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + urlParameters.langtag + '/jsonNotFound.json' ,
+                            method: 'GET',
+                            data:    '',
+                            perform: true,
+                            onSuccess: function(data)
+                            {
+                                var tour = {
+                                    id: 'hello-hopscotchs',
+                                    steps: JSON.parse(data).items
+                                };
+                                document.getElementById("startTourBtn").addEventListener('click', function () {
+                                    hopscotch.startTour(tour);
+                                });
+                            }
                         });
-                    }
-                });
-            }
-        });
+                }
+            });
     });
 }(Joomla, window));
