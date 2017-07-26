@@ -11,11 +11,11 @@ Joomla = window.Joomla || {};
                 filename = urlParameters.urlOption;
                 if (urlParameters.urlView)  {       //case if their is presence of two paramteres and they are view and option
 
-                    filename = filename + '_' + urlParameters.urlView;
+                    filename = filename + '-' + urlParameters.urlView;
                 }
                 if ((window.location.href.indexOf("layout=") > 0)){   //case if their is presence of three paramteres and they are view and option and layout
 
-                    filename = filename + '_' + urlParameters.urlLayout;
+                    filename = filename + '-' + urlParameters.urlLayout;
                 }
                 filename = filename + '.' + 'json';//made the file name to be fetched out
                 URL = urlParameters.urlOption + '/' + filename; // path from where the file to be fetched
@@ -33,7 +33,7 @@ Joomla = window.Joomla || {};
         btn.innerHTML = '<span class="icon"></span>Tour_Vanilla</button>';
         document.getElementById('toolbar').appendChild(btn);
         Joomla.request({
-            url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + urlParameters.langtag + '/'+ URL,
+            url: 'https://yveshoppe.de/jdocsapi/' + 'en-US' + '/' + filename,
             method: 'GET',
             data:    '',
             perform: true,
