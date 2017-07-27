@@ -6,16 +6,15 @@ Joomla = window.Joomla || {};
         if (window.location.href.indexOf("&") > -1) {
             var filename = '';
             var URL = '';
-
             if (urlParameters.urlOption){    //case if their is presence of two paramteres and one of them is option
                 filename = urlParameters.urlOption;
                 if (urlParameters.urlView)  {       //case if their is presence of two paramteres and they are view and option
 
-                    filename = filename + '-' + urlParameters.urlView;
+                    filename = filename + '_' + urlParameters.urlView;
                 }
                 if ((window.location.href.indexOf("layout=") > 0)){   //case if their is presence of three paramteres and they are view and option and layout
 
-                    filename = filename + '-' + urlParameters.urlLayout;
+                    filename = filename + '_' + urlParameters.urlLayout;
                 }
                 filename = filename + '.' + 'json';//made the file name to be fetched out
                 URL = urlParameters.urlOption + '/' + filename; // path from where the file to be fetched
@@ -25,6 +24,7 @@ Joomla = window.Joomla || {};
             filename = urlParameters.urlOption + '.' + 'json';
             URL = urlParameters.urlOption + '/' + filename;
         }
+        console.log(URL);
         var btn= document.createElement('button');
         btn.classList.add('btn');
         btn.classList.add('btn-sm');
@@ -33,7 +33,7 @@ Joomla = window.Joomla || {};
         btn.innerHTML = '<span class="icon"></span>Tour_Vanilla</button>';
         document.getElementById('toolbar').appendChild(btn);
         Joomla.request({
-            url: 'https://yveshoppe.de/jdocsapi/' + 'en-US' + '/' + filename,
+            url: 'https://yveshoppe.de/jdocsapi/' +  urlParameters.langtag + '/' + filename,
             method: 'GET',
             data:    '',
             perform: true,
@@ -48,7 +48,7 @@ Joomla = window.Joomla || {};
             },
             onError : function() {
                 Joomla.request({
-                    url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + urlParameters.langtag + '/jsonNotFound.json' ,
+                    url: 'https://yveshoppe.de/jdocsapi/' + urlParameters.langtag.split('-')[0]  + '/' + filename ,
                     method: 'GET',
                     data:    '',
                     perform: true,
@@ -60,9 +60,27 @@ Joomla = window.Joomla || {};
                         document.getElementById("startTourBtn").addEventListener('click', function () {
                             hopscotch.startTour(tour);
                         });
+                    },
+                    onError : function() {
+                        Joomla.request({
+                            url: 'https://yveshoppe.de/jdocsapi/' + urlParameters.langtag.split('-')[0]  + '/' + 'jsonNotFound.json' ,
+                            method: 'GET',
+                            data:    '',
+                            perform: true,
+                            onSuccess: function(data) {
+                                var tour = {
+                                    id: 'hello-hopscotchss',
+                                    steps: JSON.parse(data).items
+                                };
+                                document.getElementById("startTourBtn").addEventListener('click', function () {
+                                    hopscotch.startTour(tour);
+                                });
+                            }
+                        });
                     }
                 });
             }
+
         });
     });
 }(Joomla, window));
