@@ -33,7 +33,7 @@ Joomla = window.Joomla || {};
         btn.innerHTML = '<span class="icon"></span>Tour_Vanilla</button>';
         document.getElementById('toolbar').appendChild(btn);
         Joomla.request({
-            url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + urlParameters.langtag + '/'+ URL,
+            url: urlParameters.baseUrl + 'media/guide/' + urlParameters.langtag + '/'+ URL,
             method: 'GET',
             data:    '',
             perform: true,
@@ -48,7 +48,7 @@ Joomla = window.Joomla || {};
             },
             onError : function() {
                 Joomla.request({
-                    url: window.location.protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/media/guide/' + urlParameters.langtag + '/jsonNotFound.json' ,
+                    url: urlParameters.baseUrl + 'media/guide/' + urlParameters.langtag + '/jsonNotFound.json' ,
                     method: 'GET',
                     data:    '',
                     perform: true,

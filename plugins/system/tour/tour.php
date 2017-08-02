@@ -72,7 +72,9 @@ class PlgSystemTour extends JPlugin
 				array( 'urlOption' => $jinput->get('option'),
 					'urlView' => $jinput->get('view'),
 					'urlLayout' => $jinput->get('layout'),
-					'langtag'  => JFactory::getLanguage()->getTag()
+					'langtag'  => JFactory::getLanguage()->getTag(),
+					'baseUrl' => JUri::root()
+
 				)
 			);
 			JHtml::_(
