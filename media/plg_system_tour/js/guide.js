@@ -30,7 +30,7 @@ Joomla = window.Joomla || {};
         btn.classList.add('btn-sm');
         btn.classList.add('btn-outline-primary');
         btn.setAttribute('id', 'startTourBtn');
-        btn.innerHTML = '<span class="icon"></span>Take the Tour</button>';
+        btn.innerHTML = '<span class="fa fa-map-signs" aria-hidden="true"></span>Take the Tour</button>';
         document.getElementById('toolbar').appendChild(btn);
         console.log(urlParameters.baseUrl);
         console.log(urlParameters.baseUrl + 'media/guide/' + urlParameters.langtag + '/jsonNotFound.json');
