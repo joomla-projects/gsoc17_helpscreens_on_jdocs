@@ -32,8 +32,6 @@ Joomla = window.Joomla || {};
         btn.setAttribute('id', 'startTourBtn');
         btn.innerHTML = '<span class="fa fa-map-signs" aria-hidden="true"></span>Take the Tour</button>';
         document.getElementById('toolbar').appendChild(btn);
-        console.log(urlParameters.baseUrl);
-        console.log(urlParameters.baseUrl + 'media/guide/' + urlParameters.langtag + '/jsonNotFound.json');
         Joomla.request({
             url: urlParameters.baseUrl + 'media/guide/' + urlParameters.langtag + '/'+ URL,
             method: 'GET',
