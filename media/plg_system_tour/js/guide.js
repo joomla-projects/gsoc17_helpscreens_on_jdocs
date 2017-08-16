@@ -1,16 +1,17 @@
 Joomla = window.Joomla || {};
-(function (Joomla, window) {
 
+(function (Joomla, window) {
     document.addEventListener('DOMContentLoaded', function() {
         var urlParameters = Joomla.getOptions('tour-guide');
-        if (!urlParameters) { return; }
 
+        if (!urlParameters) { return; }
         if (window.location.href.indexOf("&") > -1) {
             var filename = '';
             var URL = '';
 
             if (urlParameters.urlOption){    //case if their is presence of two paramteres and one of them is option
                 filename = urlParameters.urlOption;
+
                 if (urlParameters.urlView)  {       //case if their is presence of two paramteres and they are view and option
 
                     filename = filename + '_' + urlParameters.urlView;
@@ -27,16 +28,16 @@ Joomla = window.Joomla || {};
             filename = urlParameters.urlOption + '.' + 'json';
             URL = urlParameters.urlOption + '/' + filename;
         }
-        var btn= document.createElement('button');
 
+        var btn= document.createElement('button');
         btn.classList.add('btn');
         btn.classList.add('btn-sm');
         btn.classList.add('btn-outline-primary');
         btn.setAttribute('id', 'startTourBtn');
         btn.innerHTML = '<span class="fa fa-map-signs" aria-hidden="true"></span>Take the Tour</button>';
         document.getElementById('toolbar').appendChild(btn);
-        Joomla.request({
 
+        Joomla.request({
             url: urlParameters.baseUrl + 'media/guide/' + urlParameters.langtag + '/'+ URL,
             method: 'GET',
             data:    '',
