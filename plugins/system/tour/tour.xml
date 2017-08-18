@@ -12,8 +12,7 @@
     <files>
         <filename plugin="tour">tour.php</filename>
     </files>
-    <!--<languages>-->
-        <!--<language ten-USn-en-USn-GB.plg_system_tour.ini</language>-->
-        <!--<language ten-USn-en-USn-GB.plg_system_tour.sys.ini</language>-->
-    <!--</languages>-->
+    <languages>
+        <language>language/en-GB.plg_tour_guide.ini</language>
+    </languages>
 </extension>
