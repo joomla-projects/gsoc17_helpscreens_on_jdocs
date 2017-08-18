@@ -69,8 +69,7 @@ class PlgSystemTour extends JPlugin
 
 			// Spliting the URL for get param of the layout,view,option etc
 			$jinput = JFactory::getApplication()->input;
-//			$lang = JFactory::getLanguage();
-//			$lang->load('en-GB.plg_tour_guide', JPATH_ADMINISTRATOR);
+			$this->loadLanguage();
 			JFactory::getDocument()->addScriptOptions(
 				'tour-guide',
 				array(
@@ -80,9 +79,7 @@ class PlgSystemTour extends JPlugin
 					'langtag'  => JFactory::getLanguage()->getTag(),
 					'baseUrl' => JUri::root(),
 					'btnname' => JText::_('COM_PLG_TOUR_START_TOUR_BTN')
-
-
-		)
+					)
 			);
 
 			JHtml::_(
