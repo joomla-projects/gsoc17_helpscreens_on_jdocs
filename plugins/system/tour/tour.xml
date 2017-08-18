@@ -13,6 +13,6 @@
         <filename plugin="tour">tour.php</filename>
     </files>
     <languages>
-        <language>language/en-GB.plg_tour_guide.ini</language>
+        <language>language/en-GB/en-GB.plg_tour_guide.ini</language>
     </languages>
 </extension>

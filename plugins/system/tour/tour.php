@@ -79,7 +79,8 @@ class PlgSystemTour extends JPlugin
 					'urlLayout' => $jinput->get('layout'),
 					'langtag'  => JFactory::getLanguage()->getTag(),
 					'baseUrl' => JUri::root(),
-					'btnname' => JFactory::getLanguage()->load('en-GB.plg_tour_guide')
+					'btnname' => JText::_('COM_PLG_TOUR_START_TOUR_BTN')
+
 
 		)
 			);
