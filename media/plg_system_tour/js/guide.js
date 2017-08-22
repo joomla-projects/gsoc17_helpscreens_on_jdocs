@@ -7,20 +7,25 @@ Joomla = window.Joomla || {};
         if (window.location.href.indexOf("&") > -1) {
             var filename = '';
             var URL = '';
-            if (urlParameters.urlOption){    //case if their is presence of two paramteres and one of them is option
+            //case if their is presence of two paramteres and one of them is option
+            if (urlParameters.urlOption) {
                 filename = urlParameters.urlOption;
 
-                if (urlParameters.urlView)  {       //case if their is presence of two paramteres and they are view and option
+                //case if their is presence of two paramteres and they are view and option
+                if (urlParameters.urlView) {
 
                     filename = filename + '_' + urlParameters.urlView;
                 }
 
-                if ((window.location.href.indexOf("layout=") > 0)){   //case if their is presence of three paramteres and they are view and option and layout
+                //case if their is presence of three paramteres and they are view and option and layout
+                if ((window.location.href.indexOf("layout=") > 0)) {
 
                     filename = filename + '_' + urlParameters.urlLayout;
                 }
-                filename = filename + '.' + 'json';//made the file name to be fetched out
-                URL = urlParameters.urlOption + '/' + filename; // path from where the file to be fetched
+                //made the file name to be fetched out
+                filename = filename + '.' + 'json';
+                // path from where the file to be fetched
+                URL = urlParameters.urlOption + '/' + filename;
             }
         } else {
             filename = urlParameters.urlOption + '.' + 'json';
