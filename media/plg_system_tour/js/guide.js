@@ -34,7 +34,7 @@ Joomla = window.Joomla || {};
         btn.innerHTML = '<span class="fa fa-map-signs" aria-hidden="true"></span>'+urlParameters.btnname+'</button>';
         document.getElementById('toolbar').appendChild(btn);
         Joomla.request({
-            url: 'https://yveshoppe.de/jdocsapi/' +  urlParameters.langtag + '/' + filename,
+            url: 'https://yveshoppe.de/jdocsapi/' +  'en-US' + '/' + filename,
 
             method: 'GET',
             data:    '',
