@@ -35,7 +35,6 @@ Joomla = window.Joomla || {};
         document.getElementById('toolbar').appendChild(btn);
         Joomla.request({
             url: 'https://yveshoppe.de/jdocsapi/' +  'en-US' + '/' + filename,
-
             method: 'GET',
             data:    '',
             perform: true,
@@ -51,7 +50,6 @@ Joomla = window.Joomla || {};
             onError : function() {
                 Joomla.request({
                     url: 'https://yveshoppe.de/jdocsapi/' + urlParameters.langtag.split('-')[0]  + '/' + filename ,
-
                     method: 'GET',
                     data:    '',
                     perform: true,
