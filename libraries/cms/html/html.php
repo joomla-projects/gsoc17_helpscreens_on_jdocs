@@ -9,6 +9,8 @@
 
 defined('JPATH_PLATFORM') or die;
 
+use Joomla\CMS\HTML\Registry;
+use Joomla\CMS\Log\Log;
 use Joomla\Utilities\ArrayHelper;
 
 jimport('joomla.environment.browser');
@@ -40,6 +42,7 @@ abstract class JHtml
 	 *
 	 * @var    string[]
 	 * @since  1.5
+	 * @deprecated  5.0
 	 */
 	protected static $includePaths = array();
 
@@ -48,8 +51,17 @@ abstract class JHtml
 	 *
 	 * @var    callable[]
 	 * @since  1.6
+	 * @deprecated  5.0
 	 */
 	protected static $registry = array();
+
+	/**
+	 * The service registry for custom and overridden JHtml helpers
+	 *
+	 * @var    Registry
+	 * @since  __DEPLOY_VERSION__
+	 */
+	protected static $serviceRegistry;
 
 	/**
 	 * Method to extract a key
@@ -67,6 +79,22 @@ abstract class JHtml
 
 		// Check to see whether we need to load a helper file
 		$parts = explode('.', $key);
+
+		if (count($parts) === 3)
+		{
+			try
+			{
+				Log::add(
+					'Support for a three segment service key is deprecated and will be removed in Joomla 5.0, use the service registry instead',
+					Log::WARNING,
+					'deprecated'
+				);
+			}
+			catch (RuntimeException $exception)
+			{
+				// Informational message only, continue on
+			}
+		}
 
 		$prefix = count($parts) === 3 ? array_shift($parts) : 'JHtml';
 		$file   = count($parts) === 2 ? array_shift($parts) : '';
@@ -105,6 +133,30 @@ abstract class JHtml
 			return static::call($function, $args);
 		}
 
+		/*
+		 * Support fetching services from the registry if a custom class prefix was not given (a three segment key),
+		 * the service comes from a class other than this one, and a service has been registered for the file.
+		 */
+		if ($prefix === 'JHtml' && $file !== '' && static::getServiceRegistry()->hasService($file))
+		{
+			$service = static::getServiceRegistry()->getService($file);
+
+			$toCall = array($service, $func);
+
+			if (!is_callable($toCall))
+			{
+				throw new InvalidArgumentException(sprintf('%s::%s not found.', $service, $func), 500);
+			}
+
+			static::register($key, $toCall);
+			$args = func_get_args();
+
+			// Remove function name from arguments
+			array_shift($args);
+
+			return static::call($toCall, $args);
+		}
+
 		$className = $prefix . ucfirst($file);
 
 		if (!class_exists($className))
@@ -121,6 +173,15 @@ abstract class JHtml
 			if (!class_exists($className))
 			{
 				throw new InvalidArgumentException(sprintf('%s not found.', $className), 500);
+			}
+		}
+
+		// If calling a method from this class, do not allow access to internal methods
+		if ($className === __CLASS__)
+		{
+			if (!((new ReflectionMethod($className, $func))->isPublic()))
+			{
+				throw new InvalidArgumentException('Access to internal class methods is not allowed.');
 			}
 		}
 
@@ -152,6 +213,19 @@ abstract class JHtml
 	 */
 	public static function register($key, callable $function)
 	{
+		try
+		{
+			Log::add(
+				'Support for registering functions is deprecated and will be removed in Joomla 5.0, use the service registry instead',
+				Log::WARNING,
+				'deprecated'
+			);
+		}
+		catch (RuntimeException $exception)
+		{
+			// Informational message only, continue on
+		}
+
 		list($key) = static::extract($key);
 
 		static::$registry[$key] = $function;
@@ -170,6 +244,19 @@ abstract class JHtml
 	 */
 	public static function unregister($key)
 	{
+		try
+		{
+			Log::add(
+				'Support for registering functions is deprecated and will be removed in Joomla 5.0, use the service registry instead',
+				Log::WARNING,
+				'deprecated'
+			);
+		}
+		catch (RuntimeException $exception)
+		{
+			// Informational message only, continue on
+		}
+
 		list($key) = static::extract($key);
 
 		if (isset(static::$registry[$key]))
@@ -198,6 +285,22 @@ abstract class JHtml
 		return isset(static::$registry[$key]);
 	}
 
+	/**
+	 * Retrieves the service registry.
+	 *
+	 * @return  Registry
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public static function getServiceRegistry()
+	{
+		if (!static::$serviceRegistry)
+		{
+			static::$serviceRegistry = new Registry;
+		}
+
+		return static::$serviceRegistry;
+	}
 	/**
 	 * Function caller method
 	 *
@@ -747,7 +850,8 @@ abstract class JHtml
 			return;
 		}
 
-		static::_('behavior.wcpolyfill');
+		// Script core.js is responsible for the polyfills and the async loading of the web components
+		static::_('behavior.core');
 
 		foreach ($component as $key => $value)
 		{
@@ -1145,6 +1249,19 @@ abstract class JHtml
 	 */
 	public static function addIncludePath($path = '')
 	{
+		try
+		{
+			Log::add(
+				'Support for registering lookup paths is deprecated and will be removed in Joomla 5.0, use the service registry instead',
+				Log::WARNING,
+				'deprecated'
+			);
+		}
+		catch (RuntimeException $exception)
+		{
+			// Informational message only, continue on
+		}
+
 		// Loop through the path directories
 		foreach ((array) $path as $dir)
 		{
