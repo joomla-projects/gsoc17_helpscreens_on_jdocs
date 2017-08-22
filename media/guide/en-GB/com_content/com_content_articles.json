@@ -2,36 +2,36 @@
   "items": [
     {
       "target": ".icon-new",
-      "title": "Article",
-      "content": "TItle content",
+      "title": "Add or Edit an Article",
+      "content": "If you want to create an new article, in the Article view, click on the green 'New' button in the top toolbar to open the edit screen of your new article",
       "placement": "bottom",
       "arrowOffset": "-1"
     },
     {
       "target": ".icon-edit",
-      "title": "Article",
-      "content": "This is an example Hopscotch tour. There will be plenty of time to read documentation and sample",
+      "title": "Edit your Article",
+      "content": "You want to change the content of an article? Just select your article and click on the 'Edit' button in the top toolbar to reach the edit screen",
       "placement": "bottom",
       "arrowOffset": "0"
     },
     {
       "target": ".icon-publish",
-      "title": "Articel",
-      "content": "Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample",
+      "title": "Publish your new content",
+      "content": "You want to publish your content? Select the article(s) you want to pubish and click on the 'Publish' Button in the top toolbar so that your content can be displayed on the frontend of your site",
       "placement": "bottom",
       "arrowOffset": "0"
     },
     {
       "target": ".icon-unpublish",
-      "title": "Article",
-      "content": "Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample",
+      "title": "Unpublish your content",
+      "content": "One of your article is out of date but you want to keep it in your backend? Select the article(s) you want to unpublish then click on the 'Unpublish' button in the top toolbar. Your article(s) won't be displayed anymore on the frontend of your site but will still be available in your backend",
       "placement": "bottom",
       "arrowOffset": "0"
     },
     {
       "target": ".icon-trash",
-      "title": "Welcome to Hopscotch! Trash",
-      "content": "Hey there! This is an example Hopscotch tour. There will be plenty of time to read documentation and sample",
+      "title": "Remove your content",
+      "content": "Keep your backend clean! When you don't need anymore some articles, select your article(s) and then click on the 'trash' button in the top toolbar. It will put your content in the trash but without deleting it permanently",
       "placement": "bottom",
       "arrowOffset": "10"
     }
