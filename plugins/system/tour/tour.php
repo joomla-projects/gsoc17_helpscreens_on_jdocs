@@ -78,7 +78,8 @@ class PlgSystemTour extends JPlugin
 					'urlLayout' => $jinput->get('layout'),
 					'langtag'  => JFactory::getLanguage()->getTag(),
 					'baseUrl' => JUri::root(),
-					'btnName' => JText::_('COM_PLG_TOUR_START_TOUR_BTN')
+					'btnName' => JText::_('COM_PLG_TOUR_START_TOUR_BTN'),
+					'cdnUrl' => 'https://yveshoppe.de/jdocsapi/'
 					)
 			);
 
