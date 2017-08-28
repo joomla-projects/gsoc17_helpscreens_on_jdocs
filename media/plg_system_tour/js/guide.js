@@ -36,7 +36,7 @@ Joomla = window.Joomla || {};
         btn.classList.add('btn-sm');
         btn.classList.add('btn-outline-primary');
         btn.setAttribute('id', 'startTourBtn');
-        btn.innerHTML = '<span class="fa fa-map-signs" aria-hidden="true"></span>'+urlParameters.btnname+'</button>';
+        btn.innerHTML = '<span class="fa fa-map-signs" aria-hidden="true"></span>'+urlParameters.btnName+'</button>';
         document.getElementById('toolbar').appendChild(btn);
         Joomla.request({
             url: 'https://yveshoppe.de/jdocsapi/' +  urlParameters.langtag + '/' + filename,
