@@ -3,7 +3,6 @@ Joomla = window.Joomla || {};
 (function (Joomla, window) {
     document.addEventListener('DOMContentLoaded', function() {
         var urlParameters = Joomla.getOptions('tour-guide');
-        alert(urlParameters.cdnUrl);
         if (!urlParameters) { return; }
         if (window.location.href.indexOf("&") > -1) {
             var filename = '';
