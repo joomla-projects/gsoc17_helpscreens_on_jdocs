@@ -7,17 +7,21 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
+namespace Joomla\CMS\Image\Filter;
+
 defined('JPATH_PLATFORM') or die;
 
-JLog::add('JImageFilterSketchy is deprecated, use Joomla\Image\Filter\Sketchy instead.', JLog::WARNING, 'deprecated');
+use Joomla\CMS\Image\ImageFilter;
+
+\JLog::add('JImageFilterEmboss is deprecated, use Joomla\Image\Filter\Emboss instead.', \JLog::WARNING, 'deprecated');
 
 /**
- * Image Filter class to make an image appear "sketchy".
+ * Image Filter class to emboss an image.
  *
  * @since       11.3
- * @deprecated  5.0  Use Joomla\Image\Filter\Sketchy instead
+ * @deprecated  5.0  Use Joomla\Image\Filter\Emboss instead
  */
-class JImageFilterSketchy extends JImageFilter
+class Emboss extends ImageFilter
 {
 	/**
 	 * Method to apply a filter to an image resource.
@@ -27,11 +31,11 @@ class JImageFilterSketchy extends JImageFilter
 	 * @return  void
 	 *
 	 * @since   11.3
-	 * @deprecated  5.0  Use Joomla\Image\Filter\Sketchy::execute() instead
+	 * @deprecated  5.0  Use Joomla\Image\Filter\Emboss::execute() instead
 	 */
 	public function execute(array $options = array())
 	{
-		// Perform the sketchy filter.
-		imagefilter($this->handle, IMG_FILTER_MEAN_REMOVAL);
+		// Perform the emboss filter.
+		imagefilter($this->handle, IMG_FILTER_EMBOSS);
 	}
 }

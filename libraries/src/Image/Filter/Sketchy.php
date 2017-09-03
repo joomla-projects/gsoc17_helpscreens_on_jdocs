@@ -7,17 +7,21 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
+namespace Joomla\CMS\Filter\Image;
+
 defined('JPATH_PLATFORM') or die;
 
-JLog::add('JImageFilterGrayscale is deprecated, use Joomla\Image\Filter\Grayscale instead.', JLog::WARNING, 'deprecated');
+use Joomla\CMS\Image\ImageFilter;
+
+\JLog::add('JImageFilterSketchy is deprecated, use Joomla\Image\Filter\Sketchy instead.', \JLog::WARNING, 'deprecated');
 
 /**
- * Image Filter class to transform an image to grayscale.
+ * Image Filter class to make an image appear "sketchy".
  *
  * @since       11.3
- * @deprecated  5.0  Use Joomla\Image\Filter\Grayscale instead
+ * @deprecated  5.0  Use Joomla\Image\Filter\Sketchy instead
  */
-class JImageFilterGrayscale extends JImageFilter
+class Sketchy extends ImageFilter
 {
 	/**
 	 * Method to apply a filter to an image resource.
@@ -27,11 +31,11 @@ class JImageFilterGrayscale extends JImageFilter
 	 * @return  void
 	 *
 	 * @since   11.3
-	 * @deprecated  5.0  Use Joomla\Image\Filter\Grayscale::execute() instead
+	 * @deprecated  5.0  Use Joomla\Image\Filter\Sketchy::execute() instead
 	 */
 	public function execute(array $options = array())
 	{
-		// Perform the grayscale filter.
-		imagefilter($this->handle, IMG_FILTER_GRAYSCALE);
+		// Perform the sketchy filter.
+		imagefilter($this->handle, IMG_FILTER_MEAN_REMOVAL);
 	}
 }

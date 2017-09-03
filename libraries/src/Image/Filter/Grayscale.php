@@ -7,17 +7,21 @@
  * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
+namespace Joomla\CMS\Image\Filter;
+
 defined('JPATH_PLATFORM') or die;
 
-JLog::add('JImageFilterEdgedetect is deprecated, use Joomla\Image\Filter\Edgedetect instead.', JLog::WARNING, 'deprecated');
+use Joomla\CMS\Image\ImageFilter;
+
+\JLog::add('JImageFilterGrayscale is deprecated, use Joomla\Image\Filter\Grayscale instead.', \JLog::WARNING, 'deprecated');
 
 /**
- * Image Filter class to add an edge detect effect to an image.
+ * Image Filter class to transform an image to grayscale.
  *
  * @since       11.3
- * @deprecated  5.0  Use Joomla\Image\Filter\Edgedetect instead
+ * @deprecated  5.0  Use Joomla\Image\Filter\Grayscale instead
  */
-class JImageFilterEdgedetect extends JImageFilter
+class Grayscale extends ImageFilter
 {
 	/**
 	 * Method to apply a filter to an image resource.
@@ -27,11 +31,11 @@ class JImageFilterEdgedetect extends JImageFilter
 	 * @return  void
 	 *
 	 * @since   11.3
-	 * @deprecated  5.0  Use Joomla\Image\Filter\Edgedetect::execute() instead
+	 * @deprecated  5.0  Use Joomla\Image\Filter\Grayscale::execute() instead
 	 */
 	public function execute(array $options = array())
 	{
-		// Perform the edge detection filter.
-		imagefilter($this->handle, IMG_FILTER_EDGEDETECT);
+		// Perform the grayscale filter.
+		imagefilter($this->handle, IMG_FILTER_GRAYSCALE);
 	}
 }
