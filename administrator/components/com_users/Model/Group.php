@@ -11,8 +11,8 @@ namespace Joomla\Component\Users\Administrator\Model;
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Access\Access;
-use Joomla\CMS\Model\Admin;
-use Joomla\CMS\Mvc\Factory\MvcFactoryInterface;
+use Joomla\CMS\MVC\Model\AdminModel;
+use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Table\Table;
 use Joomla\String\StringHelper;
@@ -23,18 +23,18 @@ use Joomla\Utilities\ArrayHelper;
  *
  * @since  1.6
  */
-class Group extends Admin
+class Group extends AdminModel
 {
 	/**
 	 * Override parent constructor.
 	 *
 	 * @param   array                $config   An optional associative array of configuration settings.
-	 * @param   MvcFactoryInterface  $factory  The factory.
+	 * @param   MVCFactoryInterface  $factory  The factory.
 	 *
-	 * @see     \Joomla\CMS\Model\Model
+	 * @see     \Joomla\CMS\MVC\Model\BaseModel
 	 * @since   3.2
 	 */
-	public function __construct($config = array(), MvcFactoryInterface $factory = null)
+	public function __construct($config = array(), MVCFactoryInterface $factory = null)
 	{
 		$config = array_merge(
 			array(
@@ -259,7 +259,7 @@ class Group extends Admin
 		{
 			if (in_array($pk, $groups))
 			{
-				\JError::raiseWarning(403, \JText::_('COM_USERS_DELETE_ERROR_INVALID_GROUP'));
+				\JFactory::getApplication()->enqueueMessage(\JText::_('COM_USERS_DELETE_ERROR_INVALID_GROUP'), 'error');
 
 				return false;
 			}
@@ -296,7 +296,7 @@ class Group extends Admin
 				{
 					// Prune items that you can't change.
 					unset($pks[$i]);
-					\JError::raiseWarning(403, \JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'));
+					\JFactory::getApplication()->enqueueMessage(\JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'), 'error');
 				}
 			}
 			else

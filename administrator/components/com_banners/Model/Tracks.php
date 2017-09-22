@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 
 use Joomla\Archive\Archive;
 use Joomla\CMS\Component\ComponentHelper;
-use Joomla\CMS\Model\ListModel;
+use Joomla\CMS\MVC\Model\ListModel;
 use Joomla\Component\Banners\Administrator\Helper\BannersHelper;
 
 /**
@@ -255,7 +255,7 @@ class Tracks extends ListModel
 		}
 		else
 		{
-			\JError::raiseWarning(403, \JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'));
+			\JFactory::getApplication()->enqueueMessage(\JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'), 'error');
 		}
 
 		return true;

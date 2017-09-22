@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Toolbar\ToolbarHelper;
-use Joomla\CMS\View\HtmlView;
+use Joomla\CMS\MVC\View\HtmlView;
 
 /**
  * Filter view class for Finder.
@@ -57,8 +57,8 @@ class Html extends HtmlView
 	/**
 	 * The total indexed items
 	 *
-	 * @var  integer
-	 * @since  __DEPLOY_VERSION__
+	 * @var    integer
+	 * @since  3.8.0
 	 */
 	protected $total;
 

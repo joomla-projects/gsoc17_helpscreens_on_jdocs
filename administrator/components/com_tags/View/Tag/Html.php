@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Toolbar\ToolbarHelper;
-use Joomla\CMS\View\HtmlView;
+use Joomla\CMS\MVC\View\HtmlView;
 
 /**
  * HTML View class for the Tags component
@@ -109,10 +109,8 @@ class Html extends HtmlView
 
 		/**
 		 * Prepare the toolbar.
-		 * If it is new we get: `badge badge-add add`
-		 * else we get `badge badge-edit edit`
 		 */
-		ToolbarHelper::title($title, 'badge badge-' . ($isNew ? 'add add' : 'edit edit'));
+		ToolbarHelper::title($title, ' fa fa-tag');
 
 		// For new records, check the create permission.
 		if ($isNew)
@@ -142,7 +140,7 @@ class Html extends HtmlView
 			{
 				$toolbarButtons[] = ['apply', 'tag.apply'];
 				$toolbarButtons[] = ['save', 'tag.save'];
-	
+
 				if ($canDo->get('core.create'))
 				{
 					$toolbarButtons[] = ['save2new', 'tag.save2new'];

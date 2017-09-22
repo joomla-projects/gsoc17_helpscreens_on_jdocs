@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Helper\SearchHelper;
 use Joomla\CMS\Pagination\Pagination;
-use Joomla\CMS\View\HtmlView;
+use Joomla\CMS\MVC\View\HtmlView;
 
 /**
  * Search HTML view class for the Finder package.
@@ -79,7 +79,7 @@ class Html extends HtmlView
 	 *
 	 * @var    array
 	 *
-	 * @since  __DEPLOY_VERSION__
+	 * @since  3.8.0
 	 */
 	protected $results;
 
@@ -88,7 +88,7 @@ class Html extends HtmlView
 	 *
 	 * @var    integer
 	 *
-	 * @since  __DEPLOY_VERSION__
+	 * @since  3.8.0
 	 */
 	protected $total;
 
@@ -97,7 +97,7 @@ class Html extends HtmlView
 	 *
 	 * @var    Pagination
 	 *
-	 * @since  __DEPLOY_VERSION__
+	 * @since  3.8.0
 	 */
 	protected $pagination;
 

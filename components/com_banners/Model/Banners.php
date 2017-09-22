@@ -11,7 +11,7 @@ namespace Joomla\Component\Banners\Site\Model;
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Component\ComponentHelper;
-use Joomla\CMS\Model\ListModel;
+use Joomla\CMS\MVC\Model\ListModel;
 use Joomla\Registry\Registry;
 use Joomla\Utilities\ArrayHelper;
 
@@ -251,7 +251,7 @@ class Banners extends ListModel
 		}
 		catch (\JDatabaseExceptionExecuting $e)
 		{
-			\JError::raiseError(500, $e->getMessage());
+			throw new \Exception($e->getMessage(), 500);
 		}
 
 		foreach ($items as $item)
@@ -289,7 +289,7 @@ class Banners extends ListModel
 				}
 				catch (\JDatabaseExceptionExecuting $e)
 				{
-					\JError::raiseError(500, $e->getMessage());
+					throw new \Exception($e->getMessage(), 500);
 				}
 
 				if ($db->getAffectedRows() === 0)
@@ -314,7 +314,7 @@ class Banners extends ListModel
 					}
 					catch (\JDatabaseExceptionExecuting $e)
 					{
-						\JError::raiseError(500, $e->getMessage());
+						throw new \Exception($e->getMessage(), 500);
 					}
 				}
 			}

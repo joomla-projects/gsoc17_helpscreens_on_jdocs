@@ -11,8 +11,8 @@ namespace Joomla\Component\Users\Administrator\Model;
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Component\ComponentHelper;
-use Joomla\CMS\Model\ListModel;
-use Joomla\CMS\Mvc\Factory\MvcFactoryInterface;
+use Joomla\CMS\MVC\Model\ListModel;
+use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\CMS\Table\Table;
 
 /**
@@ -26,12 +26,12 @@ class Levels extends ListModel
 	 * Override parent constructor.
 	 *
 	 * @param   array                $config   An optional associative array of configuration settings.
-	 * @param   MvcFactoryInterface  $factory  The factory.
+	 * @param   MVCFactoryInterface  $factory  The factory.
 	 *
-	 * @see     \Joomla\CMS\Model\Model
+	 * @see     \Joomla\CMS\MVC\Model\BaseModel
 	 * @since   3.2
 	 */
-	public function __construct($config = array(), MvcFactoryInterface $factory = null)
+	public function __construct($config = array(), MVCFactoryInterface $factory = null)
 	{
 		if (empty($config['filter_fields']))
 		{
@@ -191,7 +191,7 @@ class Levels extends ListModel
 
 		if (empty($pks))
 		{
-			return \JError::raiseWarning(500, \JText::_('COM_USERS_ERROR_LEVELS_NOLEVELS_SELECTED'));
+			return \JFactory::getApplication()->enqueueMessage(\JText::_('COM_USERS_ERROR_LEVELS_NOLEVELS_SELECTED'), 'error');
 		}
 
 		// Update ordering values
@@ -206,7 +206,7 @@ class Levels extends ListModel
 			{
 				// Prune items that you can't change.
 				unset($pks[$i]);
-				\JError::raiseWarning(403, \JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+				\JFactory::getApplication()->enqueueMessage(\JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), 'error');
 			}
 			elseif ($table->ordering != $order[$i])
 			{

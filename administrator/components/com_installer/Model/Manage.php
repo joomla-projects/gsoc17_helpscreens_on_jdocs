@@ -10,7 +10,7 @@ namespace Joomla\Component\Installer\Administrator\Model;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Mvc\Factory\MvcFactoryInterface;
+use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\CMS\Table\Extension;
 use Joomla\Component\Templates\Administrator\Table\Style;
 
@@ -25,12 +25,12 @@ class Manage extends Installer
 	 * Constructor.
 	 *
 	 * @param   array                $config   An optional associative array of configuration settings.
-	 * @param   MvcFactoryInterface  $factory  The factory.
+	 * @param   MVCFactoryInterface  $factory  The factory.
 	 *
-	 * @see     \Joomla\CMS\Model\ListModel
+	 * @see     \Joomla\CMS\MVC\Model\ListModel
 	 * @since   1.6
 	 */
-	public function __construct($config = array(), MvcFactoryInterface $factory = null)
+	public function __construct($config = array(), MVCFactoryInterface $factory = null)
 	{
 		if (empty($config['filter_fields']))
 		{
@@ -94,7 +94,7 @@ class Manage extends Installer
 	{
 		if (!\JFactory::getUser()->authorise('core.edit.state', 'com_installer'))
 		{
-			\JError::raiseWarning(403, \JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+			\JFactory::getApplication()->enqueueMessage(\JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), 'error');
 
 			return false;
 		}
@@ -124,7 +124,7 @@ class Manage extends Installer
 
 				if ($style->load(array('template' => $table->element, 'client_id' => $table->client_id, 'home' => 1)))
 				{
-					\JError::raiseNotice(403, \JText::_('COM_INSTALLER_ERROR_DISABLE_DEFAULT_TEMPLATE_NOT_PERMITTED'));
+					\JFactory::getApplication()->enqueueMessage(\JText::_('COM_INSTALLER_ERROR_DISABLE_DEFAULT_TEMPLATE_NOT_PERMITTED'), 'notice');
 					unset($eid[$i]);
 					continue;
 				}
@@ -133,7 +133,7 @@ class Manage extends Installer
 			if ($table->protected == 1)
 			{
 				$result = false;
-				\JError::raiseWarning(403, \JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+				\JFactory::getApplication()->enqueueMessage(\JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), 'error');
 			}
 			else
 			{
@@ -200,7 +200,7 @@ class Manage extends Installer
 	{
 		if (!\JFactory::getUser()->authorise('core.delete', 'com_installer'))
 		{
-			\JError::raiseWarning(403, \JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'));
+			\JFactory::getApplication()->enqueueMessage(\JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'), 'error');
 
 			return false;
 		}

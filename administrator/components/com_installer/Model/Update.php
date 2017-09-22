@@ -12,10 +12,10 @@ defined('_JEXEC') or die;
 
 jimport('joomla.updater.update');
 
-use Joomla\CMS\Model\ListModel;
+use Joomla\CMS\MVC\Model\ListModel;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\Utilities\ArrayHelper;
-use Joomla\CMS\Mvc\Factory\MvcFactoryInterface;
+use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 
 /**
  * Installer Update Model
@@ -28,12 +28,12 @@ class Update extends ListModel
 	 * Constructor.
 	 *
 	 * @param   array                $config   An optional associative array of configuration settings.
-	 * @param   MvcFactoryInterface  $factory  The factory.
+	 * @param   MVCFactoryInterface  $factory  The factory.
 	 *
-	 * @see     \Joomla\CMS\Model\ListModel
+	 * @see     \Joomla\CMS\MVC\Model\ListModel
 	 * @since   1.6
 	 */
-	public function __construct($config = array(), MvcFactoryInterface $factory = null)
+	public function __construct($config = array(), MVCFactoryInterface $factory = null)
 	{
 		if (empty($config['filter_fields']))
 		{
@@ -399,7 +399,7 @@ class Update extends ListModel
 
 		if (!isset($update->get('downloadurl')->_data))
 		{
-			\JError::raiseWarning('', \JText::_('COM_INSTALLER_INVALID_EXTENSION_UPDATE'));
+			\JFactory::getApplication()->enqueueMessage(\JText::_('COM_INSTALLER_INVALID_EXTENSION_UPDATE'), 'error');
 
 			return false;
 		}
@@ -417,7 +417,7 @@ class Update extends ListModel
 		// Was the package downloaded?
 		if (!$p_file)
 		{
-			\JError::raiseWarning('', \JText::sprintf('COM_INSTALLER_PACKAGE_DOWNLOAD_FAILED', $url));
+			\JFactory::getApplication()->enqueueMessage(\JText::sprintf('COM_INSTALLER_PACKAGE_DOWNLOAD_FAILED', $url), 'error');
 
 			return false;
 		}
@@ -493,6 +493,7 @@ class Update extends ListModel
 
 			return false;
 		}
+
 		// Check the session for previously entered form data.
 		$data = $this->loadFormData();
 

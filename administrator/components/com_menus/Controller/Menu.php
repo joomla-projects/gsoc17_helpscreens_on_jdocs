@@ -10,7 +10,7 @@ namespace Joomla\Component\Menus\Administrator\Controller;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Controller\Form;
+use Joomla\CMS\MVC\Controller\FormController;
 use Joomla\Component\Menus\Administrator\Helper\MenusHelper;
 
 /**
@@ -18,7 +18,7 @@ use Joomla\Component\Menus\Administrator\Helper\MenusHelper;
  *
  * @since  1.6
  */
-class Menu extends Form
+class Menu extends FormController
 {
 	/**
 	 * Dummy method to redirect back to standard controller
@@ -77,7 +77,7 @@ class Menu extends Form
 
 		if (!$form)
 		{
-			\JError::raiseError(500, $model->getError());
+			throw new \Exception($model->getError(), 500);
 
 			return false;
 		}
@@ -189,7 +189,7 @@ class Menu extends Form
 	 *
 	 * @return  boolean  True if successful, false otherwise.
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   3.8.0
 	 */
 	public function exportXml()
 	{

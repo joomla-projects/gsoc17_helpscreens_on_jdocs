@@ -10,14 +10,14 @@ namespace Joomla\Component\Messages\Administrator\Controller;
 
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Controller\Controller;
+use Joomla\CMS\MVC\Controller\BaseController;
 
 /**
  * Messages Component Message Model
  *
  * @since  1.6
  */
-class Config extends Controller
+class Config extends BaseController
 {
 	/**
 	 * Method to save a record.
@@ -40,7 +40,7 @@ class Config extends Controller
 
 		if (!$form)
 		{
-			\JError::raiseError(500, $model->getError());
+			throw new \Exception($model->getError(), 500);
 
 			return false;
 		}
