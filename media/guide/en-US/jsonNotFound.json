@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "target": ".icon-question-sign",
+      "title": "'Tour Guide Not Found'",
+      "content": "'Use Help Screen, Guided Tour Not exist'",
+      "placement": "left",
+      "arrowOffset": "-1"
+    }
+  ]
+}
